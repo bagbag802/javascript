@@ -113,9 +113,9 @@ var DAYS = {
 
 //Some constants to make things work properly
 	var FEBRUARY = 'February';
-	var FIRST_LEAP_YEAR = 1582;
-	//first day of 1582, used to calculate day of week
-	var FIRST_DAY = DAYS['Monday'];
+	var FIRST_LEAP_YEAR = 1584;
+	//first day of 1584, used to calculate day of week
+	var FIRST_DAY = DAYS['Sunday'];
 	var DAYS_IN_COMMON_YEAR = 365;
 	var DAYS_IN_A_WEEK = 7;
 //Couple options
@@ -215,7 +215,6 @@ var DAYS = {
 		//Add event listener to the days select
 	    addEventHandler(document.getElementById('days'), 'change', function() {
 	    	var firstDayOfYear = calculateFirstDayOfYear(year);
-	    	console.log(firstDayOfYear);
 	    	//var dayOfWeek = calculateDayOfWeek(month, year);
 	    });
 	}
@@ -223,11 +222,11 @@ var DAYS = {
 		totalDays = 0;
 		for (var i = FIRST_LEAP_YEAR; i<year; i++){
 			totalDays = totalDays + DAYS_IN_COMMON_YEAR;
-			if(calculateIfLeapYear(i)){
+			if(calculateIfLeapYear(i)){				
 				totalDays = totalDays + 1;
 			}
 		}
-		return getDayByDayOfWeek(totalDays % DAYS_IN_A_WEEK + 1);
+		return getDayByDayOfWeek(totalDays % DAYS_IN_A_WEEK);
 	}
 	function getDayByDayOfWeek(dayOfTheWeek){
 		for(var day in DAYS){
